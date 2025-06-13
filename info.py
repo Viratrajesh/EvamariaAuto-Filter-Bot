@@ -35,7 +35,7 @@ DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in enviro
 
 #this vars is for when heroku or koyeb acc get banned, then change this vars as your file to link bot name
 BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002232025730'))
-URL = environ.get('URL', 'https://t.me/+EyqJTMJwn1hmMzY1')
+URL = environ.get('URL', 'https://t.me/MTGxStreamBot')
 
 # verify system vars
 IS_VERIFY = is_enabled('IS_VERIFY', True)
@@ -56,7 +56,7 @@ THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "21600"))
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
-auth_channel = environ.get('AUTH_CHANNEL', '-1002395713472')
+auth_channel = environ.get('AUTH_CHANNEL', '-1002395713472 -1002007085025')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002633073907'))
 
