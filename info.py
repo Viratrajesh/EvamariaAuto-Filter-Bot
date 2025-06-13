@@ -20,16 +20,16 @@ def is_enabled(value, default):
 #main variables
 API_ID = int(environ.get('API_ID', '23361081'))
 API_HASH = environ.get('API_HASH', '0605c5395b91ead763072251e20c3417')
-BOT_TOKEN = environ.get('BOT_TOKEN', '8163381986:AAHhxImKr6LJdYZlFLKC-wevc1XZb12C4U8')
+BOT_TOKEN = environ.get('BOT_TOKEN', '8040135776:AAGXPSSYOoWd3nj_VZteK2TDhcfpcDq3Wfc')
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5371238852 5102717153').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Rajesh1817')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002725803259'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002058942218'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002197398349').split()]
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_URI2 = environ.get('DATABASE_URI2', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rahul")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rahul')
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002725803259'))
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Rajesh:Rajeah@rajesh.4m2jrxj.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh")
+DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Rajeah:Rajeah@rajesh2.2oma8nb.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh2")
+DATABASE_NAME = environ.get('DATABASE_NAME', "Rajesh")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rajesh2')
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002058942218'))
 QR_CODE = environ.get('QR_CODE', 'https://envs.sh/haY.jpg')
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
 
@@ -39,7 +39,7 @@ URL = environ.get('URL', '')
 
 # verify system vars
 IS_VERIFY = is_enabled('IS_VERIFY', True)
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002725803259'))
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002395713472'))
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/Tutorial01Ask")
 TUTORIAL2 = environ.get("TUTORIAL2", "https://t.me/Tutorial01Ask")
 TUTORIAL3 = environ.get("TUTORIAL3", "https://t.me/Tutorial01Ask")
@@ -56,7 +56,7 @@ THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "21600"))
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
-auth_channel = environ.get('AUTH_CHANNEL', '-1002197398349')
+auth_channel = environ.get('AUTH_CHANNEL', '-1002395713472')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', 'https://t.me/Askmovies2_bot'))
 
