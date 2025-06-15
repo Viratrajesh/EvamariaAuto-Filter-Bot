@@ -18,15 +18,15 @@ def is_enabled(value, default):
         return default
 
 #main variables
-API_ID = int(environ.get('API_ID', '23361081'))
-API_HASH = environ.get('API_HASH', '0605c5395b91ead763072251e20c3417')
+API_ID = int(environ.get('API_ID', ''))
+API_HASH = environ.get('API_HASH', '')
 BOT_TOKEN = environ.get('BOT_TOKEN', '8040135776:AAGXPSSYOoWd3nj_VZteK2TDhcfpcDq3Wfc')
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5371238852 5102717153').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Rajesh1817')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002058942218'))
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002197398349').split()]
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Rajesh:Rajeah@rajesh.4m2jrxj.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh")
-DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Rajeah:Rajeah@rajesh2.2oma8nb.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh2")
+DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_URI2 = environ.get('DATABASE_URI2', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rajesh")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rajesh2')
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002058942218'))
