@@ -129,6 +129,8 @@ async def start(client:Client, message):
     id = settings.get('fsub_id', AUTH_CHANNEL)
     channel = int(id)
     check = await check_fsub(client, message)
+    if not check:
+        return
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
         grp_id = int(grp_id)
