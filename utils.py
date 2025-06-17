@@ -17,7 +17,7 @@ from database.users_chats_db import db
 import requests
 import aiohttp
 from info import REQ_CHANNEL
-from join_req import db as join_db
+from database.join_req import db as join_db
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
