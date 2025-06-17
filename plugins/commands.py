@@ -11,9 +11,10 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details
 from database.users_chats_db import db
 from info import ADMINS, THREE_VERIFY_GAP, LOG_CHANNEL, USERNAME, VERIFY_IMG, IS_VERIFY, AUTH_CHANNEL, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, SHORTENER_API3, SHORTENER_WEBSITE3, LOG_API_CHANNEL, TWO_VERIFY_GAP, TUTORIAL, TUTORIAL2, TUTORIAL3, QR_CODE, DELETE_TIME
-from utils import get_settings, save_group_settings, is_subscribed, get_size, get_shortlink, is_check_admin, get_status, temp, get_readable_time
+from utils import get_settings, save_group_settings, is_subscribed, get_size, get_shortlink, is_check_admin, get_status, temp, get_readable_time, is_requested
 import re
 import base64
+from info import REQ_CHANNEL
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client:Client, message): 
@@ -126,20 +127,24 @@ async def start(client:Client, message):
     settings = await get_settings(int(data.split("_", 2)[1]))
     id = settings.get('fsub_id', AUTH_CHANNEL)
     channel = int(id)
-    if settings.get('fsub_id', AUTH_CHANNEL) and not await is_subscribed(client, message.from_user.id, channel):
-        invite_link = await client.create_chat_invite_link(channel)
-        btn = [[
-                InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
-                ]]
+    if REQ_CHANNEL and not await is_requested(client, message.from_user.id): 
+        btn = [[ 
+                InlineKeyboardButton("𝗝𝗼𝗶𝗻 UPDATES 𝗖𝗵𝗮𝗻𝗻𝗲𝗹", url=REQ_CHANNEL_INVITE_LINK) 
+            ]] 
         if message.command[1] != "subscribe":
-            btn.append([InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
+            try:
+                kk, file_id = message.command[1].split("_", 1) 
+                pre = 'checksubp' if kk == 'filep' else 'checksub' 
+                btn.append([InlineKeyboardButton(" 🔄 Try Again", callback_data=f"{pre}#{file_id}")])  
+            except (IndexError, ValueError):
+                btn.append([InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])  
         await client.send_message(
             chat_id=message.from_user.id,
-            text=script.FSUB_TXT.format(message.from_user.mention),
+            text='**സിനിമ ലഭിക്കാനായി താഴെ കാണുന്ന "Join Updates Channel" എന്ന ബട്ടനിൽ ക്ലിക്ക് ചെയ്ത് "Request to Join Channel" എന്ന ബട്ടണിൽ ക്ലിക് ചെയ്യുക. ശേഷം തൊട്ട് താഴെ ഉള്ള "Try Again"ബട്ടൺ ക്ലിക്ക് ആക്കിയൽ നിങ്ങൾക്ക് സിനിമയുടെ ലിങ്ക് ലഭിക്കുന്നതാണ്..\n\n𝖢𝗅𝗂𝖼𝗄 𝗈𝗇 𝗍𝗁𝖾 "𝖩𝗈𝗂𝗇 𝖴𝗉𝖽𝖺𝗍𝖾𝗌 𝖢𝗁𝖺𝗇𝗇𝖾𝗅" 𝖻𝗎𝗍𝗍𝗈𝗇 𝖻𝖾𝗅𝗈𝗐 𝖺𝗇𝖽 𝖼𝗅𝗂𝖼𝗄 𝗈𝗇 𝗍𝗁𝖾 "𝖱𝖾𝗊𝗎𝖾𝗌𝗍 𝗍𝗈 𝖩𝗈𝗂𝗇 𝖢𝗁𝖺𝗇𝗇𝖾𝗅" 𝖻𝗎𝗍𝗍𝗈𝗇 𝗍𝗈 𝗀𝖾𝗍 𝗍𝗁𝖾 𝗆𝗈𝗏𝗂𝖾. 𝖠𝖿𝗍𝖾𝗋 𝖼𝗅𝗂𝖼𝗄𝗂𝗇𝗀 𝗍𝗁𝖾 "𝖳𝗋𝗒 𝖠𝗀𝖺𝗂𝗇" 𝖻𝗎𝗍𝗍𝗈𝗇 𝖻𝖾𝗅𝗈𝗐, 𝗒𝗈𝗎 𝗐𝗂𝗅𝗅 𝗀𝖾𝗍 𝗍𝗁𝖾 𝗅𝗂𝗇𝗄 𝗈𝖿 𝗍𝗁𝖾 𝗆𝗈𝗏𝗂𝖾**',
             reply_markup=InlineKeyboardMarkup(btn),
-            parse_mode=enums.ParseMode.HTML
-        )
-        return
+            parse_mode=enums.ParseMode.MARKDOWN 
+            )
+        return 
             
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
