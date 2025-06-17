@@ -18,18 +18,18 @@ def is_enabled(value, default):
         return default
 
 #main variables
-API_ID = int(environ.get('API_ID', ''))
-API_HASH = environ.get('API_HASH', '')
+API_ID = int(environ.get('API_ID', '23361081'))
+API_HASH = environ.get('API_HASH', '0605c5395b91ead763072251e20c3417')
 BOT_TOKEN = environ.get('BOT_TOKEN', '8040135776:AAGXPSSYOoWd3nj_VZteK2TDhcfpcDq3Wfc')
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5371238852 5102717153').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Rajesh1817')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002058942218'))
 REQ_CHANNEL = int(environ.get('REQ_CHANNEL', '') if environ.get('REQ_CHANNEL') else None
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002197398349').split()]
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_URI2 = environ.get('DATABASE_URI2', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rajesh")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rajesh2')
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Rajeah:Rajeah@rajesh2.2oma8nb.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh2")
+DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://Rajesh:Rajeah@rajesh.4m2jrxj.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh")
+DATABASE_NAME = environ.get('DATABASE_NAME', "Rajesh2")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Rajesh')
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002058942218'))
 QR_CODE = environ.get('QR_CODE', 'https://envs.sh/haY.jpg')
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
@@ -57,7 +57,7 @@ THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "21600"))
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
-auth_channel = environ.get('AUTH_CHANNEL', '-1002007085025')
+auth_channel = environ.get('AUTH_CHANNEL', '-1002246394054')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002633073907'))
 
