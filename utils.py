@@ -16,6 +16,8 @@ from typing import Any
 from database.users_chats_db import db
 import requests
 import aiohttp
+from info import REQ_CHANNEL
+from join_req import db as join_db
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -48,20 +50,16 @@ async def is_subscribed(bot, user_id, channel_id):
             return True
     return False
 
-async def is_req_subscribed(bot, query):
-    if await db.find_join_req(query.from_user.id):
-        return True
+async def is_requested(bot, user_id):
     try:
-        user = await bot.get_chat_member(AUTH_CHANNEL, query.from_user.id)
-    except UserNotParticipant:
-        pass
-    except Exception as e:
-        logger.exception(e)
-    else:
-        if user.status != enums.ChatMemberStatus.BANNED:
+        user_requested = await join_db.get_req(user_id)
+        if user_requested or user_id in ADMINS:
             return True
-    return False
- 
+        return False
+    except Exception as e:
+        print(f"Error in is_requested: {e}")
+        return False
+
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
         query = (query.strip()).lower()
