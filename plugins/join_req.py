@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import ChatJoinRequest
 from info import ADMINS, REQ_CHANNEL
-from database.users_chats_db import db
+from database.join_req import db
 
 @Client.on_chat_join_request(filters.chat(REQ_CHANNEL))
 async def join_reqs(client, join_req: ChatJoinRequest):
