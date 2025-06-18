@@ -60,6 +60,11 @@ async def is_requested(bot, user_id):
         print(f"Error in is_requested: {e}")
         return False
 
+
+async def is_req_subscribed(bot, user_id):
+    return await is_requested(bot, user_id)
+
+
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
         query = (query.strip()).lower()
