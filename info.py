@@ -24,7 +24,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '8040135776:AAGXPSSYOoWd3nj_VZteK2TDhcfpcDq
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5371238852 5102717153').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Rajesh1817')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002058942218'))
-REQ_CHANNEL = environ.get('REQ_CHANNEL', '-1002139516496')
+REQ_CHANNEL = environ.get('REQ_CHANNEL', '-1002140797761')
 REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and REQ_CHANNEL.lstrip('-').isdigit() else None
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002197398349').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Rajeah:Rajeah@rajesh2.2oma8nb.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh2")
@@ -58,7 +58,7 @@ THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "21600"))
 # languages search
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam"]
 
-auth_channel = environ.get('AUTH_CHANNEL', '-1002139516496')
+auth_channel = environ.get('AUTH_CHANNEL', '-1002140797761')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002633073907'))
 
