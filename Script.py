@@ -1,35 +1,35 @@
 import os
-
 class script(object):
-    START_TXT = """<b><i>Hi {} {},
-
+    
+    START_TXT = """<b><i>ʜʏ {} {},
+    
 ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ ʙᴏᴛ ᴡɪᴛʜ ᴀᴅᴠᴀɴᴄᴇ ᴇᴀʀɴ ꜰᴇᴀᴛᴜʀᴇ.
-ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴀɴʏ ᴍᴏᴠɪᴇꜱ, ꜱᴇʀɪᴇꜱ ᴏʀ ᴀɴɪᴍᴇ ɪɴ ɢʀᴏᴜᴘ ʙʏ ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ꜱʜᴏʀᴛɴᴇʀ...
+ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴀɴʏ ᴍᴏᴠɪᴇꜱ, ꜱᴇʀɪᴇꜱ ᴏʀ ᴀɴɪᴍᴇ ɪɴ ɢʀᴏᴜᴘ ʙʏ ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ꜱʜᴏʀᴛɴᴇʀ...
 
 ʏᴏᴜʀ ɪᴅ -<code> {}</code></i></b>"""
+    
+    HELP_TXT = """<b><i>ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴꜱ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ..</i></b>"""
+    
+    CODEXBOTS = """<b><i>/upload - sᴇɴᴅ ᴍᴇ ᴘɪᴄᴛᴜʀᴇ ᴏʀ ᴠɪᴅᴇᴏ ᴜɴᴅᴇʀ (5ᴍʙ)
 
-    HELP_TXT = """<b><i>Click the buttons below to get help about each feature.</i></b>"""
+ɴᴏᴛᴇ - ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴏɴʟʏ ᴡᴏʀᴋ ɪɴ ᴘᴍ</i></b>"""
+ 
+    STATUS_TXT = """<b><u>🗃 ᴅᴀᴛᴀʙᴀsᴇ 1 🗃</u>
 
-    CODEXBOTS = """<b><i>/upload - Send me a photo or video under 5MB
+» ᴛᴏᴛᴀʟ ᴜsᴇʀs - <code>{}</code>
+» ᴛᴏᴛᴀʟ ɢʀᴏᴜᴘs - <code>{}</code>
+» ᴜsᴇᴅ sᴛᴏʀᴀɢᴇ - <code>{} / {}</code>
 
-Note - This works only in private chat.</i></b>"""
+<u>🗳 ᴅᴀᴛᴀʙᴀsᴇ 2 🗳</u></b>
 
-    STATUS_TXT = """<b><u>🗃 Database 1 🗃</u>
+» ᴛᴏᴛᴀʟ ꜰɪʟᴇs - <code>{}</code>
+» ᴜsᴇᴅ sᴛᴏʀᴀɢᴇ - <code>{} / {}</code>
 
-» Total Users - <code>{}</code>
-» Total Groups - <code>{}</code>
-» Used Storage - <code>{} / {}</code>
+<u>🤖 ʙᴏᴛ ᴅᴇᴛᴀɪʟs 🤖</u>
 
-<u>🗳 Database 2 🗳</u></b>
-
-» Total Files - <code>{}</code>
-» Used Storage - <code>{} / {}</code>"""
-
-<u>🤖 Bot Details 🤖</u>
-
-» Uptime - <code>{}</code>
-» RAM - <code>{}%</code>
-» CPU - <code>{}%</code></b>"""
+» ᴜᴘᴛɪᴍᴇ - <code>{}</code>
+» ʀᴀᴍ - <code>{}%</code>
+» ᴄᴘᴜ - <code>{}%</code></b>""
 
 NEW_USER_TXT = """<b>#New_User
 
