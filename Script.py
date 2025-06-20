@@ -33,17 +33,17 @@ class script(object):
 
 NEW_USER_TXT = """<b>#New_User
 
-≈ ID:- <code>{}</code>
-≈ Name:- {}</b>"""
+≈ ɪᴅ:- <code>{}</code>
+≈ ɴᴀᴍᴇ:- {}</b>"""
 
-NEW_GROUP_TXT = """#New_Group
+    NEW_GROUP_TXT = """#New_Group
 
-Group Name - {}
-ID - <code>{}</code>
-Username - @{}
-Link - {}
-Members - <code>{}</code>
-Added By - {}"""
+Group name - {}
+Id - <code>{}</code>
+Group username - @{}
+Group link - {}
+Total members - <code>{}</code>
+User - {}"""
 
 IMDB_TEMPLATE_TXT = """<b>📻 Title - <a href={url}>{title}</a>
 
