@@ -364,7 +364,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
+                        InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")
                     ]
                 ]
             )
