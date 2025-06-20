@@ -1,20 +1,20 @@
 import os
-class script(object):
 
-START_TXT = """<b><i>Hi {} {},
-    
+class script(object):
+    START_TXT = """<b><i>Hi {} {},
+
 ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ ʙᴏᴛ ᴡɪᴛʜ ᴀᴅᴠᴀɴᴄᴇ ᴇᴀʀɴ ꜰᴇᴀᴛᴜʀᴇ.
-ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴀɴʏ ᴍᴏᴠɪᴇꜱ, ꜱᴇʀɪᴇꜱ ᴏʀ ᴀɴɪᴍᴇ ɪɴ ɢʀᴏᴜᴘ ʙʏ ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ꜱʜᴏʀᴛɴᴇʀ...
+ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴀɴʏ ᴍᴏᴠɪᴇꜱ, ꜱᴇʀɪᴇꜱ ᴏʀ ᴀɴɪᴍᴇ ɪɴ ɢʀᴏᴜᴘ ʙʏ ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ꜱʜᴏʀᴛɴᴇʀ...
 
 ʏᴏᴜʀ ɪᴅ -<code> {}</code></i></b>"""
 
-HELP_TXT = """<b><i>Click the buttons below to get help about each feature.</i></b>"""
+    HELP_TXT = """<b><i>Click the buttons below to get help about each feature.</i></b>"""
 
-CODEXBOTS = """<b><i>/upload - Send me a photo or video under 5MB
+    CODEXBOTS = """<b><i>/upload - Send me a photo or video under 5MB
 
 Note - This works only in private chat.</i></b>"""
 
-STATUS_TXT = """<b><u>🗃 Database 1 🗃</u>
+    STATUS_TXT = """<b><u>🗃 Database 1 🗃</u>
 
 » Total Users - <code>{}</code>
 » Total Groups - <code>{}</code>
@@ -23,7 +23,7 @@ STATUS_TXT = """<b><u>🗃 Database 1 🗃</u>
 <u>🗳 Database 2 🗳</u></b>
 
 » Total Files - <code>{}</code>
-» Used Storage - <code>{} / {}</code>
+» Used Storage - <code>{} / {}</code>"""
 
 <u>🤖 Bot Details 🤖</u>
 
