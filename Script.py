@@ -1,12 +1,12 @@
 import os
 class script(object):
 
-START_TXT = """<b><i>Hey {} {},
+START_TXT = """<b><i>ʜʏ {} {},
+    
+ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏ ꜰɪʟᴛᴇʀ ʙᴏᴛ ᴡɪᴛʜ ᴀᴅᴠᴀɴᴄᴇ ᴇᴀʀɴ ꜰᴇᴀᴛᴜʀᴇ.
+ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ɢɪᴠᴇ ᴀɴʏ ᴍᴏᴠɪᴇꜱ, ꜱᴇʀɪᴇꜱ ᴏʀ ᴀɴɪᴍᴇ ɪɴ ɢʀᴏᴜᴘ ʙʏ ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ꜱʜᴏʀᴛɴᴇʀ...
 
-I'm a powerful auto filter bot with an advanced earning feature.
-You can use me in your group to get any movies, series, or anime using your connected shortener.
-
-Your ID - <code>{}</code></i></b>"""
+ʏᴏᴜʀ ɪᴅ -<code> {}</code></i></b>"""
 
 HELP_TXT = """<b><i>Click the buttons below to get help about each feature.</i></b>"""
 
