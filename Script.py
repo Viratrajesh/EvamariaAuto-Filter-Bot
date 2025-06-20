@@ -91,7 +91,6 @@ User - {}"""
 
     PREMIUM_TEXT = """<b><i><blockquote>ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs  ♻️</blockquote>
 
-
 ☆ 1 Week - 15₹
 ☆ 1 Month - 39₹
 ☆ 3 Months - 99₹
