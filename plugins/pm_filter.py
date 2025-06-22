@@ -373,7 +373,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
             )
         )
     
-     elif query.data.startswith("stream"):
+   elif query.data.startswith("stream"):
         user_id = query.from_user.id
         if not await db.has_premium_access(user_id):
             d=await query.message.reply("<b>💔 ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ ɪꜱ ᴏɴʟʏ ꜰᴏʀ ʙᴏᴛ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ.\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ʙᴏᴛ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ᴛʜᴇɴ ꜱᴇɴᴅ /plan</b>")
@@ -394,7 +394,6 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
         ]]
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup(btn)
-        )
         )
 
     elif query.data == "buttons":
