@@ -341,35 +341,36 @@ async def cb_handler(client: Client, query: CallbackQuery):
             pass
 
     elif query.data.startswith("checksub"):
-        ident, file_id = query.data.split("#")
-        settings = await get_settings(query.message.chat.id)
-        if AUTH_CHANNEL and not await is_req_subscribed(client, query):
-            await query.answer("ɪ ʟɪᴋᴇ ʏᴏᴜʀ sᴍᴀʀᴛɴᴇss ʙᴜᴛ ᴅᴏɴ'ᴛ ʙᴇ ᴏᴠᴇʀsᴍᴀʀᴛ 😒\nꜰɪʀsᴛ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ 😒", show_alert=True)
-            return         
-        files_ = await get_file_details(file_id)
-        if not files_:
-            return await query.answer('ɴᴏ sᴜᴄʜ ꜰɪʟᴇ ᴇxɪsᴛs 🚫')
-        files = files_[0]
-        CAPTION = settings['caption']
-        f_caption = CAPTION.format(
-            file_name = files.file_name,
-            file_size = get_size(files.file_size),
-            file_caption = files.caption
-        )
-        await client.send_cached_media(
-            chat_id=query.from_user.id,
-            file_id=file_id,
-            caption=f_caption,
-            protect_content=settings['file_secure'],
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")
-                    ]
-                ]
-            )
-        )
+    ident, file_id = query.data.split("#")
+    settings = await get_settings(query.message.chat.id)
 
+    if AUTH_CHANNEL and not await is_req_subscribed(client, query):
+        await query.answer(
+            "😒 ɪ ʟɪᴋᴇ ʏᴏᴜʀ sᴍᴀʀᴛɴᴇss ʙᴜᴛ ᴅᴏɴ'ᴛ ʙᴇ ᴏᴠᴇʀsᴍᴀʀᴛ\n🔔 ꜰɪʀsᴛ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ!", show_alert=True
+        )
+        return
+
+    files_ = await get_file_details(file_id)
+    if not files_:
+        return await query.answer("🚫 ɴᴏ sᴜᴄʜ ꜰɪʟᴇ ᴇxɪsᴛs")
+
+    files = files_[0]
+    CAPTION = settings['caption']
+    f_caption = CAPTION.format(
+        file_name=files.file_name,
+        file_size=get_size(files.file_size),
+        file_caption=files.caption
+    )
+
+    await client.send_cached_media(
+        chat_id=query.from_user.id,
+        file_id=file_id,
+        caption=f_caption,
+        protect_content=settings['file_secure'],
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")]
+        ])
+    )
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
         if not await db.has_premium_access(user_id):
