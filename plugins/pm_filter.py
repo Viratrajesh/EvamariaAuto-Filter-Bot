@@ -343,16 +343,6 @@ from pyrogram.errors import UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # Force subscription check function
-async def is_req_subscribed(client, query):
-    try:
-        user = await client.get_chat_member(AUTH_CHANNEL, query.from_user.id)
-        return user.status in ["member", "administrator", "creator"]
-    except UserNotParticipant:
-        return False
-    except Exception as e:
-        print(f"[ERROR] Subscription check failed: {e}")
-        return False
-
     elif query.data.startswith("checksub"):
         ident, file_id = query.data.split("#")
         settings = await get_settings(query.message.chat.id)
