@@ -24,7 +24,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '8040135776:AAFn3hpw41J6kclx7QnN8qdaDF4TyZp
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5371238852 5102717153').split()]
 USERNAME = environ.get('USERNAME', 'https://telegram.me/Rajesh1817')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002058942218'))
-REQ_CHANNEL = environ.get('REQ_CHANNEL', '-1002896124865')
+REQ_CHANNEL = environ.get('REQ_CHANNEL', 'Askmovieslink1')
 REQ_CHANNEL = int(REQ_CHANNEL) if REQ_CHANNEL and REQ_CHANNEL.lstrip('-').isdigit() else None
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002197398349').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Rajeah:Rajeah@rajesh2.2oma8nb.mongodb.net/?retryWrites=true&w=majority&appName=Rajesh2")
