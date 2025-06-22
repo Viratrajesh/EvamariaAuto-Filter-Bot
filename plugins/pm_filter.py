@@ -353,73 +353,37 @@ async def is_req_subscribed(client, query):
         print(f"[ERROR] Subscription check failed: {e}")
         return False
 
-
-
-    
-    elif query.data.startswith("stream"):
-        user_id = query.from_user.id
-        if not await db.has_premium_access(user_id):
-            d=await query.message.reply("<b>💔 ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ ɪꜱ ᴏɴʟʏ ꜰᴏʀ ʙᴏᴛ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ.\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ʙᴏᴛ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ᴛʜᴇɴ ꜱᴇɴᴅ /plan</b>")
-            await asyncio.sleep(120)
-            await d.delete(from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-# 👇 REPLACE with your private channel's numeric ID (no quotes)
-AUTH_CHANNEL = -1001234567890  # Example, replace with your real ID
-
-
-# ✅ 1. Function to check if user is subscribed
-async def is_req_subscribed(client, query):
-    try:
-        print(f"[DEBUG] Checking if user {query.from_user.id} is in {AUTH_CHANNEL}")
-        member = await client.get_chat_member(AUTH_CHANNEL, query.from_user.id)
-        print(f"[DEBUG] Member status: {member.status}")
-        return member.status in ["member", "administrator", "creator"]
-    except UserNotParticipant:
-        print("[DEBUG] UserNotParticipant triggered")
-        return False
-    except Exception as e:
-        print(f"[ERROR] Unexpected error: {e}")
-        return False
-
-
-# ✅ 2. Try Again button handler for force subscription
-elif query.data.startswith("checksub"):
-    ident, file_id = query.data.split("#")
-    settings = await get_settings(query.message.chat.id)
-
-    if AUTH_CHANNEL and not await is_req_subscribed(client, query):
-        await query.answer(
-            "😒 ɪ ʟɪᴋᴇ ʏᴏᴜʀ sᴍᴀʀᴛɴᴇss ʙᴜᴛ ᴅᴏɴ'ᴛ ʙᴇ ᴏᴠᴇʀsᴍᴀʀᴛ\n🔔 ꜰɪʀsᴛ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ!", show_alert=True
-        )
-        return
-
-    files_ = await get_file_details(file_id)
-    if not files_:
-        return await query.answer("🚫 ɴᴏ sᴜᴄʜ ꜰɪʟᴇ ᴇxɪsᴛs")
-
-    files = files_[0]
-    CAPTION = settings['caption']
-    f_caption = CAPTION.format(
-        file_name=files.file_name,
-        file_size=get_size(files.file_size),
-        file_caption=files.caption
-    )
-
-    await client.send_cached_media(
-        chat_id=query.from_user.id,
-        file_id=file_id,
-        caption=f_caption,
-        protect_content=settings['file_secure'],
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")]
-        ])
-    ))
-if query.data:
-    if query.data.startswith("checksub"):
+    elif query.data.startswith("checksub"):
         ident, file_id = query.data.split("#")
-        # ✅ Your checksub logic here...
-    elif query.data.startswith("stream"):
+        settings = await get_settings(query.message.chat.id)
+        if AUTH_CHANNEL and not await is_req_subscribed(client, query):
+            await query.answer("ɪ ʟɪᴋᴇ ʏᴏᴜʀ sᴍᴀʀᴛɴᴇss ʙᴜᴛ ᴅᴏɴ'ᴛ ʙᴇ ᴏᴠᴇʀsᴍᴀʀᴛ 😒\nꜰɪʀsᴛ ᴊᴏɪɴ ᴏᴜʀ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ 😒", show_alert=True)
+            return         
+        files_ = await get_file_details(file_id)
+        if not files_:
+            return await query.answer('ɴᴏ sᴜᴄʜ ꜰɪʟᴇ ᴇxɪsᴛs 🚫')
+        files = files_[0]
+        CAPTION = settings['caption']
+        f_caption = CAPTION.format(
+            file_name = files.file_name,
+            file_size = get_size(files.file_size),
+            file_caption = files.caption
+        )
+        await client.send_cached_media(
+            chat_id=query.from_user.id,
+            file_id=file_id,
+            caption=f_caption,
+            protect_content=settings['file_secure'],
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
+                    ]
+                ]
+            )
+        )
+    
+     elif query.data.startswith("stream"):
         user_id = query.from_user.id
         if not await db.has_premium_access(user_id):
             d=await query.message.reply("<b>💔 ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ ɪꜱ ᴏɴʟʏ ꜰᴏʀ ʙᴏᴛ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ.\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ʙᴏᴛ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ᴛʜᴇɴ ꜱᴇɴᴅ /plan</b>")
@@ -427,7 +391,7 @@ if query.data:
             await d.delete()
             return
         file_id = query.data.split('#', 1)[1]
-        NOBITA = await client.lsend_cached_media(
+        NOBITA = await client.send_cached_media(
             chat_id=BIN_CHANNEL,
             file_id=file_id)
         online = f"https://{URL}/watch/{NOBITA.id}?hash={get_hash(NOBITA)}"
@@ -440,6 +404,7 @@ if query.data:
         ]]
         await query.edit_message_reply_markup(
             reply_markup=InlineKeyboardMarkup(btn)
+        )
         )
 
     elif query.data == "buttons":
