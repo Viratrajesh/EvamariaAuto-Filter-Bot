@@ -354,7 +354,36 @@ async def is_req_subscribed(client, query):
         return False
 
 
-# Callback query handler for "checksub"
+
+    
+    elif query.data.startswith("stream"):
+        user_id = query.from_user.id
+        if not await db.has_premium_access(user_id):
+            d=await query.message.reply("<b>💔 ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ ɪꜱ ᴏɴʟʏ ꜰᴏʀ ʙᴏᴛ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ.\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ʙᴏᴛ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ᴛʜᴇɴ ꜱᴇɴᴅ /plan</b>")
+            await asyncio.sleep(120)
+            await d.delete(from pyrogram.errors import UserNotParticipant
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+# 👇 REPLACE with your private channel's numeric ID (no quotes)
+AUTH_CHANNEL = -1001234567890  # Example, replace with your real ID
+
+
+# ✅ 1. Function to check if user is subscribed
+async def is_req_subscribed(client, query):
+    try:
+        print(f"[DEBUG] Checking if user {query.from_user.id} is in {AUTH_CHANNEL}")
+        member = await client.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        print(f"[DEBUG] Member status: {member.status}")
+        return member.status in ["member", "administrator", "creator"]
+    except UserNotParticipant:
+        print("[DEBUG] UserNotParticipant triggered")
+        return False
+    except Exception as e:
+        print(f"[ERROR] Unexpected error: {e}")
+        return False
+
+
+# ✅ 2. Try Again button handler for force subscription
 elif query.data.startswith("checksub"):
     ident, file_id = query.data.split("#")
     settings = await get_settings(query.message.chat.id)
@@ -385,8 +414,8 @@ elif query.data.startswith("checksub"):
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")]
         ])
-)
-    
+    ))
+
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
         if not await db.has_premium_access(user_id):
