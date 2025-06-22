@@ -339,8 +339,23 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
+from pyrogram.errors import UserNotParticipant
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-    elif query.data.startswith("checksub"):
+# Force subscription check function
+async def is_req_subscribed(client, query):
+    try:
+        user = await client.get_chat_member(AUTH_CHANNEL, query.from_user.id)
+        return user.status in ["member", "administrator", "creator"]
+    except UserNotParticipant:
+        return False
+    except Exception as e:
+        print(f"[ERROR] Subscription check failed: {e}")
+        return False
+
+
+# Callback query handler for "checksub"
+elif query.data.startswith("checksub"):
     ident, file_id = query.data.split("#")
     settings = await get_settings(query.message.chat.id)
 
@@ -370,7 +385,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")]
         ])
-    )
+)
+    
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
         if not await db.has_premium_access(user_id):
@@ -379,7 +395,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await d.delete()
             return
         file_id = query.data.split('#', 1)[1]
-        NOBITA = await client.send_cached_media(
+        NOBITA = await client.lsend_cached_media(
             chat_id=BIN_CHANNEL,
             file_id=file_id)
         online = f"https://{URL}/watch/{NOBITA.id}?hash={get_hash(NOBITA)}"
