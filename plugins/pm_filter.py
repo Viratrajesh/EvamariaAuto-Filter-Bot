@@ -415,7 +415,10 @@ elif query.data.startswith("checksub"):
             [InlineKeyboardButton("🔁 Try Again", callback_data=f"checksub#{file_id}")]
         ])
     ))
-
+if query.data:
+    if query.data.startswith("checksub"):
+        ident, file_id = query.data.split("#")
+        # ✅ Your checksub logic here...
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
         if not await db.has_premium_access(user_id):
